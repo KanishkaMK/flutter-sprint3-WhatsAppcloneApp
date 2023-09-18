@@ -1,28 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp/models/status_model.dart';
+import 'package:whatsapp/models/call_model.dart';
 
-class StatusPage extends StatelessWidget {
-  StatusPage({super.key});
+class CallPage extends StatelessWidget {
+  CallPage({super.key});
 
-  List<Status> statusList = [
-    Status(
-        avatar:
+  List<Call> listCall = [
+    Call(
+        avathar:
             "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50",
-        name: "Kanishka",
-        updatedAt: '2.00 pm',
-        status: "Today"),
-    Status(
-        avatar:
+        name: 'Kani',
+        status: 'Incoming',
+        updatedAt: '5am',
+        type: Icon(Icons.phone)),
+        Call(
+        avathar:
             "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50",
-        name: "cybersquare flutter team",
-        updatedAt: '3.00 pm',
-        status: "Today"),
-    Status(
-        avatar:
+        name: 'Kaniska',
+        status: 'Outgoing',
+        updatedAt: '5am',
+        type: Icon(Icons.videocam)),
+        Call(
+        avathar:
             "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50",
-        name: "cybersquare flutter team",
-        updatedAt: '3.00 pm',
-        status: "Today"),
+        name: 'Kala',
+        status: 'Incoming',
+        updatedAt: '5am',
+        type: Icon(Icons.phone))
   ];
 
   @override
@@ -37,34 +40,33 @@ class StatusPage extends StatelessWidget {
                 backgroundImage: NetworkImage(
                     'https://tse4.mm.bing.net/th?id=OIP.gtYDGnVfcJH3fx8d7M0AfwAAAA&pid=Api&P=0'),
               ),
-              title: Text('My status'),
-              subtitle: Text('Add to my status'),
+              title: Text('Create Call Link',style: TextStyle(color: Colors.blue),),
+              subtitle: Text('Share a link for your WhatsApp call'),
             ),
             Text(
-              'Recent Updates',
+              'Recent',
               style: new TextStyle(
                 fontWeight: FontWeight.bold,
+                color: Colors.black
               ),
               textAlign: TextAlign.right,
             ),
             ListView.builder(
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                itemCount: statusList.length,
+                itemCount: listCall.length,
                 itemBuilder: (context, index) {
                   return ListTile(
-                    title: Text(statusList[index].name),
+                    title: Text(listCall[index].name),
                     leading: CircleAvatar(
-                      backgroundImage: NetworkImage(statusList[index].avatar!),
+                      backgroundImage: NetworkImage(listCall[index].avathar!),
                     ),
                     subtitle: Row(
-                      children: [
-                        Text(statusList[index].status),
-                        Text(' , '),
-                        Text(statusList[index].updatedAt)
+                      children: [Icon(listCall[index].type.icon),
+                        Text(listCall[index].status),
                       ],
                     ),
-                  //  trailing: Text(statusList[index].updatedAt),
+                    trailing: Text(listCall[index].updatedAt),
                   );
                 })
           ],
